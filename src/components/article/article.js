@@ -90,6 +90,7 @@ const data = [
   }
 ];
 
+console.log(data[0].title);
 /*
   Step 1: Write a component called 'articleMaker' to create an article.
   Your component is a function that takes an article object as its only argument,
@@ -115,3 +116,43 @@ const data = [
   Step 5: Try adding new article object to the data array. Make sure it is in the same format as the others.
   Refresh the page to see the new article.
 */
+
+function articleMaker(artObj){
+  //S1_Instantiate elements
+  const article = document.createElement("div");
+  const artTitle = document.createElement("h2");
+  const artDate = document.createElement("p");
+  const artP1 = document.createElement("p");
+  const artP2 = document.createElement("p");
+  const artP3 = document.createElement("p");
+  const expandBtn = document.createElement("span");
+  //s2_Setup Structure
+  article.appendChild(artTitle);
+  article.appendChild(artDate);
+  article.appendChild(artP1);
+  article.appendChild(artP2);
+  article.appendChild(artP3);
+  article.appendChild(expandBtn);
+  //s3_Add Proper className
+  article.classList.add("article");
+  artDate.classList.add("date");
+  expandBtn.classList.add("expandButton");
+  //s4_Set Text Content
+  artTitle.textContent = artObj.title;
+  artDate.textContent = artObj.date;
+  artP1.textContent = artObj.firstParagraph;
+  artP2.textContent = artObj.secondParagraph;
+  artP3.textContent = artObj.thirdParagraph;
+  expandBtn.textContent = "+" 
+  //s5_add event listener to .expandButton
+  expandBtn.addEventListener("click", evt => {
+    article.classList.toggle("article-open");
+  })
+  //s6_return article
+  return article;
+}
+// s7_loop over the data
+data.forEach(artObj => {
+  const artElem = articleMaker(artObj);
+  document.querySelector("div.articles").appendChild(artElem);
+})
