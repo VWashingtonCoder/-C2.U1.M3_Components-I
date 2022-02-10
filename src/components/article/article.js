@@ -27,7 +27,7 @@ import data from "./data"
 */
 
 function articleMaker(artObj){
-  //S1_Instantiate elements
+  //s1_Instantiate elements
   const article = document.createElement("div");
   const artTitle = document.createElement("h2");
   const artDate = document.createElement("p");
